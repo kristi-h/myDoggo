@@ -1,14 +1,15 @@
 import React from "react"
-
+import dotenv from "dotenv";
+dotenv.config();
 
 export default function getDogsImg(){
     const headers = {
-        'x-api-key' : 'process.env.DOGS_API_KEY'
+        'x-api-key' : import.meta.env.VITE_DOGS_API_KEY
     }
     const [dogs, setDogs] = React.useState([])
     React.useEffect(() => {
         const url = "https://api.thedogapi.com/v1/images/search?limit=10"
-        fetch(url)
+        fetch(url, {headers})
             .then(resp => resp.json())
             .then(data => setDogs(data))
     }, [])

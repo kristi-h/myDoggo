@@ -47,6 +47,18 @@ header a:hover {
   text-decoration: underline;
 }
 
+footer {
+  background-color: #3C4142;
+  color: #AAAAAA;
+  height: 74px;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  font-weight: 500;
+}
+
 .link-button {
   display: inline-block;
   text-align: center;

@@ -21,9 +21,7 @@ export default function DogProfile() {
             {dog ? (
                 <div className="dog-profile">
                     <img src={dog.url} />
-                    <i className={`dog-height ${dog.height} selected`}></i>
-                    <h2>{dog.name}</h2>
-                    <p className="dog-width"><span>${dog.width}</span>/day</p>
+                    <h2>{dog.id}</h2>
                     <button className="link-button">Save to favorites</button>
                 </div>
             ) : <h2>Loading...</h2>}

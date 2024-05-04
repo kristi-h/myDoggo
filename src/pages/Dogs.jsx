@@ -31,7 +31,15 @@ export default function getDogsImg(){
     return(
         <div className="dog-list-container">
             <div className="dog-list">
-                {dogEls}
+                {
+                    dogs.length > 0 ? (
+                        <section>
+                            {dogEls}
+                        </section>
+                    ) : (
+                            <h2>Loading...</h2>
+                        )
+                }
             </div>
         </div>
     )

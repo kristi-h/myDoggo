@@ -1,5 +1,5 @@
 import React from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 
 export default function DogProfile() {
     const params = useParams()
@@ -17,6 +17,15 @@ export default function DogProfile() {
     }, [params.id])
 
     return (
+        <section>
+        <Link
+            to=".."
+            relative="path"
+            className="back-button"
+        >&larr; <span>Back to all dogs</span>
+        </Link>
+
+        
         <div className="dog-profile-container">
             {dog ? (
                 <div className="dog-profile">
@@ -26,6 +35,8 @@ export default function DogProfile() {
                 </div>
             ) : <h2>Loading...</h2>}
         </div>
+        </section>
+             
     )
 
 

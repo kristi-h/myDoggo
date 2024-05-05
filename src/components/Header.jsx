@@ -11,14 +11,14 @@ export default function Header() {
     return (
         <header>
             <Link className="site-logo" to="/">#myBestFriend</Link>
-            <nav>
+            <nav className="nav">
                 <NavLink 
-                    to="/about"
+                    to="about"
                     style={({isActive})=> isActive ? activeStyles : null }
                     >About
                 </NavLink>
                 <NavLink
-                    to="/dogs"
+                    to="dogs"
                     style={({isActive})=> isActive ? activeStyles : null }
                     >Dogs
                 </NavLink>

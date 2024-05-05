@@ -3,14 +3,14 @@ import { Link, NavLink } from "react-router-dom"
 
 export default function Header() {
     const activeStyles = {
-        color: "#40e0d0",
+        color: "#115E59",
         textDecoration: "underline",
         fontWeight: "bold"
       }
 
     return (
         <header>
-            <Link className="site-logo" to="/">#myBestFriend</Link>
+            <Link className="site-logo" to="/">#doggozine</Link>
             <nav className="nav">
                 <NavLink 
                     to="about"

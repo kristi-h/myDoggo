@@ -164,8 +164,8 @@ home-image {
 }
 
 .about-page-cta .link-button {
-  background-color: #3C4142;
-  color: #ffebd3;
+  background-color: #ffebd3;
+  color: #264e70;
   border-radius: 10px;
 }
 
@@ -205,12 +205,12 @@ home-image {
   border: none;
   border-radius: 5px;
   background-color: #FFEAD0;
-  color: #4D4D4D;
+  color: #264e70;
   transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dog-type:hover {
-  color: #FFEAD0;
+  color: #ddd0ff;
 }
 
 .dog-type:focus {

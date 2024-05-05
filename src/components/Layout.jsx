@@ -8,6 +8,9 @@ export default function Layout() {
         <>
             <Header />
             <Outlet />
+            <br></br>
+            <br></br>
+            <br></br>
             <Footer />
         </>
     )

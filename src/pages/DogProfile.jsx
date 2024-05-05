@@ -1,38 +1,42 @@
 import React from "react"
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, useSearchParams } from "react-router-dom"
+import { nanoid } from 'nanoid'
 
 export default function DogProfile() {
-    const params = useParams()
-    const [dog, setDog] = React.useState(null)
-
-    const headers = {
-        'x-api-key' : import.meta.env.VITE_DOGS_API_KEY
-    }
+    
+    const [dog, setDog] = React.useState([])
+    
 
     React.useEffect(() => {
-        const url = 'https://api.thedogapi.com/v1/images/search?limit=10&${params.id}'
-        fetch(url, {headers})
+        const url = 'https://dog.ceo/api/breed/akita/images'
+        fetch(url)
             .then(resp => resp.json())
-            .then(data => setDog(data.dog))
-    }, [params.id])
+            .then(data => {
+                setDog(data.message)})
+            
+    }, [])
+
+    const dogPic = dog.map(url  => {
+        return (
+            <div key={nanoid}>
+                <p>{url}</p> 
+            </div>
+            
+        )
+    })
 
     return (
         <section>
         <Link
             to=".."
             relative="path"
-            className="back-button"
-        >&larr; <span>Back to all dogs</span>
+            className="back-button">
+            <span>Back to all dogs</span>
         </Link>
-
-        
+    
         <div className="dog-profile-container">
             {dog ? (
-                <div className="dog-profile">
-                    <img src={dog.url} />
-                    <h2>{dog.id}</h2>
-                    <button className="link-button">Save to favorites</button>
-                </div>
+                {dogPic}
             ) : <h2>Loading...</h2>}
         </div>
         </section>

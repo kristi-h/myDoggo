@@ -7,8 +7,7 @@ export default function getDogsImg(){
         'x-api-key' : import.meta.env.VITE_DOGS_API_KEY
     }
     const [dogs, setDogs] = React.useState([{
-        breed: "",
-        pics: []
+        breed: ""
     }])
 
     React.useEffect(() => {
@@ -17,7 +16,7 @@ export default function getDogsImg(){
             .then(resp => resp.json())
             .then(data => {
                 const dogsData = Object.keys(data.message).map(
-                    key  => ({ breed: key, pics: data.message[key] }))
+                    key  => ({ breed: key }))
                 setDogs(dogsData)})
             
     }, [])
@@ -27,8 +26,9 @@ export default function getDogsImg(){
     const dogEl = dogs.map(dog => {
         return (
             <>
-                <h2 key={dog.breed}>{dog.breed}</h2>
-                {dog.pics.map(url => <img key={url} src={url} />)}
+                <Link className="dog-type" to="/dogprofile/:{breed}">
+                    <h2 key={dog.breed}>{dog.breed}</h2>
+                </Link>
             </>
         )
       })

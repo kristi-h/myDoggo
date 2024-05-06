@@ -27,7 +27,7 @@ export default function getDogsImg(){
     const dogEl = dogs.map(dog => {
         return (
             <>
-                <Link className="dog-type" to="/dogprofile/?{breed}">
+                <Link className="dog-type" to={`/dogprofile/${dog.breed}`}>
                     <h2 key={dog.type}>{dog.breed}</h2>
                 </Link>
             </>

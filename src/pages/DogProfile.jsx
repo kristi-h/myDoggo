@@ -8,8 +8,9 @@ export default function DogProfile() {
     const searchParams = useSearchParams()
     const [breed, setBreed] = useState
     (searchParams.get("type"))
-
+    
     React.useEffect(() => {
+        setBreed(breed)
         const url = 'https://dog.ceo/api/breed/{breed}/images'
         fetch(url)
             .then(resp => resp.json())
@@ -20,7 +21,7 @@ export default function DogProfile() {
 
     const dogPic = dog.map(url  => {
         return (
-            <div key={nanoid}>
+            <div key={breed}>
                 <p>{url}</p> 
             </div>
             

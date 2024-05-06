@@ -14,7 +14,7 @@ export default function DogProfile() {
             .then(data => {
                 setDog(data.message)})
             
-    }, [dog])
+    }, [])
     console.log(dog)
 
     const dogPic = dog.map(url  => {
@@ -37,8 +37,8 @@ export default function DogProfile() {
         </Link>
     
         <div className="dog-profile-container">
-            {dog ? (
-                {dogPic}
+            {dog[0] ? (
+                dogPic
             ) : <h2>Loading...</h2>}
         </div>
         </section>

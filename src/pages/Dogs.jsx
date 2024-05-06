@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { nanoid } from 'nanoid'
+
 
 export default function getDogsImg(){
     const headers = {
@@ -26,7 +26,7 @@ export default function getDogsImg(){
     const dogEl = dogs.map(dog => {
         return (
             <>
-                <Link className="dog-type" to="/dogprofile/:{breed}">
+                <Link className="dog-type" to="/dogprofile/?{breed}">
                     <h2 key={dog.breed}>{dog.breed}</h2>
                 </Link>
             </>

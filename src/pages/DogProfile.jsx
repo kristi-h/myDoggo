@@ -3,12 +3,13 @@ import { useParams, Link, useSearchParams } from "react-router-dom"
 import { nanoid } from 'nanoid'
 
 export default function DogProfile() {
-    
+    const {breed} = useParams()
     const [dog, setDog] = React.useState([])
     
+    const {type} = useSearchParams()
 
     React.useEffect(() => {
-        const url = 'https://dog.ceo/api/breed/akita/images'
+        const url = 'https://dog.ceo/api/breed/{type}/images'
         fetch(url)
             .then(resp => resp.json())
             .then(data => {

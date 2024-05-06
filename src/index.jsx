@@ -16,7 +16,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="dogs" element={<Dogs />} />
-          <Route path="dogprofile/:breed" element={<DogProfile />} />
+          <Route path="dogprofile/:type" element={<DogProfile />} />
         </Route>
       </Routes>
     </BrowserRouter>

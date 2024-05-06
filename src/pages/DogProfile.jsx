@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, useParams } from "react-router-dom"
+import { nanoid } from 'nanoid'
 
 export default function DogProfile() {
     
@@ -7,17 +8,19 @@ export default function DogProfile() {
     const { type } = useParams()
     
     React.useEffect(() => {
-        const url = 'https://dog.ceo/api/breed/${type}/images'
+        const url = `https://dog.ceo/api/breed/${type}/images`
         fetch(url)
             .then(resp => resp.json())
             .then(data => {
                 setDog(data.message)})
             
-    }, [])
+    }, [dog])
+    console.log(dog)
 
     const dogPic = dog.map(url  => {
         return (
-            <div key={type}>
+            
+            <div key={nanoid}>
                 <p>{url}</p> 
             </div>
             

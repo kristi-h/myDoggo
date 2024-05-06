@@ -31,9 +31,11 @@ export default function getDogsImg(){
                 <Link className="dog-type" to={`/dogprofile/${dog.breed}`}>
                     <h2 key={dog.breed}>{dog.breed}</h2> 
                 </Link>
-                <p>{dog.pics.map(item => {
+                <p>{dog.pics.map((item, index) => {
                         return(
-                            <p>{item}</p>)}
+                            <>
+                            <p key={item[index]}>{item? `Type: ${item}`:null}</p> </>)}
+                           
                         )}</p>
             </>
         )

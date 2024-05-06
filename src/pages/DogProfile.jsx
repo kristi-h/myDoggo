@@ -1,21 +1,22 @@
 import React from "react"
-import { useParams, Link, useSearchParams } from "react-router-dom"
-import { nanoid } from 'nanoid'
+import { Link, useSearchParams } from "react-router-dom"
 
 export default function DogProfile() {
-    const {breed} = useParams()
+    
     const [dog, setDog] = React.useState([])
     
-    const {type} = useSearchParams()
+    const searchParams = useSearchParams()
+    const [breed, setBreed] = useState
+    (searchParams.get("type"))
 
     React.useEffect(() => {
-        const url = 'https://dog.ceo/api/breed/{type}/images'
+        const url = 'https://dog.ceo/api/breed/{breed}/images'
         fetch(url)
             .then(resp => resp.json())
             .then(data => {
                 setDog(data.message)})
             
-    }, [])
+    }, [breed])
 
     const dogPic = dog.map(url  => {
         return (

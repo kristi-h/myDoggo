@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
 
 export default function getDogsImg(){
@@ -9,6 +9,7 @@ export default function getDogsImg(){
     const [dogs, setDogs] = React.useState([{
         breed: ""
     }])
+    const { type } = useParams()
 
     React.useEffect(() => {
         const url = 'https://dog.ceo/api/breeds/list/all'
@@ -27,7 +28,7 @@ export default function getDogsImg(){
         return (
             <>
                 <Link className="dog-type" to="/dogprofile/?{breed}">
-                    <h2 key={dog.breed}>{dog.breed}</h2>
+                    <h2 key={dog.type}>{dog.breed}</h2>
                 </Link>
             </>
         )

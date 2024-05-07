@@ -1,8 +1,8 @@
 import React from "react"
 import { Link, useParams} from "react-router-dom"
+import { getAllBreeds } from "../api"
 
-
-export default function getDogsImg(){
+export default function Dogs(){
     const [dogs, setDogs] = React.useState([{
         breed: "", 
         pics: []
@@ -10,14 +10,13 @@ export default function getDogsImg(){
     const { type } = useParams()
 
     React.useEffect(() => {
-        const url = 'https://dog.ceo/api/breeds/list/all'
-        fetch(url)
-            .then(resp => resp.json())
-            .then(data => {
-                const dogsData = Object.keys(data.message).map(
-                    key  => ({ breed: key, pics: data.message[key] }))
-                setDogs(dogsData)})
-            
+        async function loadBreeds() {
+            const data = await getAllBreeds()
+            const dogsData = await Object.keys(data.message).map(
+                key  => ({ breed: key, pics: data.message[key] }))
+            setDogs(dogsData)
+        }
+        loadBreeds() 
     }, [])
     
     console.log(dogs)

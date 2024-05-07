@@ -9,6 +9,7 @@ export async function getAllBreeds() {
         }
     }
     const data = await res.json()
-    return data
+    const dogsData = await Object.keys(data.message).map(key  => ({ breed: key, subbreed: data.message[key] }))
+    return dogsData
 }
    

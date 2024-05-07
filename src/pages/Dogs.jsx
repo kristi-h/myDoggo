@@ -1,26 +1,22 @@
 import React from "react"
-import { Link, useParams} from "react-router-dom"
+import { 
+    useLoaderData, 
+    Link, 
+    useParams
+} from "react-router-dom"
 import { getAllBreeds } from "../api"
 
+export function loader() {
+    return getAllBreeds()
+}
 export default function Dogs(){
-    const [dogs, setDogs] = React.useState([{
-        breed: "", 
-        pics: []
-    }])
-    const { type } = useParams()
-
-    React.useEffect(() => {
-        async function loadBreeds() {
-            const data = await getAllBreeds()
-            const dogsData = await Object.keys(data.message).map(
-                key  => ({ breed: key, pics: data.message[key] }))
-            setDogs(dogsData)
-        }
-        loadBreeds() 
-    }, [])
+    const dogs {
+        breed: "";
+        subbreed: [];
+    } = useLoaderData()
     
-    console.log(dogs)
-
+    const { type } = useParams()
+    
     const dogEl = dogs.map(dog => {
         return (
             <>
@@ -31,7 +27,7 @@ export default function Dogs(){
                 </Link>
                 
                 <p>{
-                    dog.pics.map((item, index) => {
+                    dog.subbreed.map((item, index) => {
                         return(
                             <>
                                 <p key={item[index]}>

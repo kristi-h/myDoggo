@@ -8,7 +8,7 @@ import {
 import ReactDOM from 'react-dom/client'
 import Home from './pages/Home'
 import About from './pages/About'  
-import Dogs from './pages/Dogs'
+import Dogs, { loader as dogsLoader } from './pages/Dogs'
 import DogProfile from './pages/DogProfile'
 import './index.css'
 import Layout from "./components/Layout"
@@ -18,7 +18,7 @@ const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
-      <Route path="dogs" element={<Dogs />} />
+      <Route path="dogs" element={<Dogs />} loader={vansLoader} />
       <Route path="dogs/:type" element={<DogProfile />} />
       <Route path="*" element={<NotFound />} />
     </Route>

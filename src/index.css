@@ -28,7 +28,7 @@ header {
 }
 
 header .site-logo {
-  color: #3C4142;
+  color: #264e70;
   margin-right: auto;
   text-transform: uppercase;
   font-weight: 900;
@@ -77,8 +77,9 @@ footer {
 }
 
 /*** HOME PAGE ***/
-home-image {
-  max-width: 50%;
+.home-image {
+  max-width: 100%;
+  box-shadow: 0 0 8px 8px
 }
 
 .home-container {
@@ -128,6 +129,18 @@ home-image {
 /*** ABOUT PAGE ***/
 .about-image {
   max-width: 100%;
+  box-shadow: 0 0 8px 8px;
+}
+
+.about-page-container {
+  background: linear-gradient(0deg, #264e70), (0deg, #ffb4ac)), url("./assets/images/home-hero.png") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size:100% auto;
+  min-height: 350px;
+  color: #264e70;
+  padding: 45px 23px;
 }
 
 .about-page-content {
@@ -221,18 +234,6 @@ home-image {
   color: #FFEAD0;
 }
 
-.dog-type.simple:hover, .dog-type.simple.selected {
-  background-color: #E17654;
-}
-
-.dog-type.rugged:hover, .dog-type.rugged.selected {
-  background-color: #115E59;
-}
-
-.dog-type.luxury:hover, .dog-type.luxury.selected {
-  background-color: #161616;
-}
-
 .dog-type.clear-filters {
   margin-left: -20px;
   height: 34px;
@@ -248,4 +249,48 @@ home-image {
 
 i[class*='dog-type-'] {
   padding: 7px 14px;
+}
+
+/*** DOG PROFILE PAGE ***/
+
+.title {
+  text-align: center;
+  font-size: 7rem;
+  color: #264e70;
+}
+
+.dogPics img {
+  float: left;
+  width:  20rem;
+  height: 20rem;
+  object-fit: cover;
+  padding: 10px 10px 10px 10px;
+  border-style: ridge;
+  border-color: #264e70;
+  border-radius: 50%;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dog-profile-container {
+  padding-inline: 23px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  gap: 34px;
+  margin-top: 57px;
+}
+
+#pic:hover  {
+    padding: 1rem;
+    background-image: linear-gradient(to bottom, rgba(240, 255, 40, 1) 0%, rgba(240, 255, 40, 1) 100%), linear-gradient(to bottom, #264e70 0%, #26706c 100%);
+    background-clip: content-box, padding-box;
+}
+  
+#pic:focus {
+  outline: none;
+}
+  
+#pic.selected {
+  color: #FFEAD0;
 }

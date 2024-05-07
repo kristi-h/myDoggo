@@ -1,10 +1,12 @@
 import React from "react"
-import { Link, useParams } from "react-router-dom"
+import { Link, useParams, useLocation } from "react-router-dom"
 import { nanoid } from 'nanoid'
 
 export default function DogProfile() {
     
     const [dog, setDog] = React.useState([])
+    const location = useLocation()
+    console.log(location)
     const { type } = useParams()
     
     React.useEffect(() => {
@@ -25,9 +27,15 @@ export default function DogProfile() {
             
         )
     })
-
+    
     return (
         <section>
+        <Link
+                to=".."
+                relative="path"
+                className="back-button"
+            >&larr; <span>Back to all dogs</span>
+        </Link>
 
         <h1 className="title">{type[0].toUpperCase()+type.slice(1).toLowerCase()}s</h1>
     
@@ -36,7 +44,7 @@ export default function DogProfile() {
                 dogPic
             ) : <h2>Loading...</h2>}
         </div>
-        
+
         </section>
              
     )

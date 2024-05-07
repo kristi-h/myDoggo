@@ -1,11 +1,8 @@
 import React from "react"
-import { Link, useParams } from "react-router-dom"
+import { Link, useParams} from "react-router-dom"
 
 
 export default function getDogsImg(){
-    const headers = {
-        'x-api-key' : import.meta.env.VITE_DOGS_API_KEY
-    }
     const [dogs, setDogs] = React.useState([{
         breed: "", 
         pics: []
@@ -28,7 +25,9 @@ export default function getDogsImg(){
     const dogEl = dogs.map(dog => {
         return (
             <>
-                <Link className="dog-type" to={`/dogprofile/${dog.breed}`}>
+                <Link className="dog-type" 
+                to={`${dog.breed}`}
+                >
                     <h2 key={dog.breed}>{dog.breed}</h2> 
                 </Link>
                 

@@ -28,12 +28,6 @@ export default function DogProfile() {
 
     return (
         <section>
-        <Link
-            to=".."
-            relative="path"
-            className="back-button">
-            <span>Back to all dogs</span>
-        </Link>
 
         <h1 className="title">{type[0].toUpperCase()+type.slice(1).toLowerCase()}s</h1>
     
@@ -42,6 +36,7 @@ export default function DogProfile() {
                 dogPic
             ) : <h2>Loading...</h2>}
         </div>
+        
         </section>
              
     )

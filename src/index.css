@@ -359,3 +359,6 @@ img:hover  {
   background-clip: content-box, padding-box;
 }
 
+button {
+  border-width: 0;
+}

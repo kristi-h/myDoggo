@@ -10,13 +10,28 @@ export async function loader () {
 export default function Quiz() {
     const dogImgs = useLoaderData()
 
+    function getBreedName(url) {
+        const name = url.substr(30, url.indexOf("/") )
+        const capName = name[0].toUpperCase()+name.slice(1).toLowerCase()
+        return capName
+    }
+
     const randDogEl = dogImgs.map((randDog, index) => {
         return (
             <div key={index} className ="rand-dog-tile">
-                <img src={randDog} />
+                <button 
+                // onClick={handleClick}   
+                >
+                    <img src={randDog}></img>
+                    <p>{getBreedName(randDog)}</p>
+                </button>
             </div>
         )
     })
+
+    // function handleClick() {
+
+    // }
 
     return(
         <div>

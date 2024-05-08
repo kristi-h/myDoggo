@@ -259,7 +259,7 @@ i[class*='dog-type-'] {
   color: #264e70;
 }
 
-.dogPics img {
+.dog-pics img {
   float: left;
   width:  20rem;
   height: 20rem;
@@ -303,5 +303,59 @@ i[class*='dog-type-'] {
   width: 100%;
   background-color: #161616;
   color: white;
-
 }
+
+.back-button {
+  color: #264e70
+}
+
+/***  QUIZ PAGE ***/
+
+.title {
+  text-align: center;
+  font-size: 5rem;
+  color: #264e70;
+}
+
+h3 {
+  text-align: center;
+  font-size: 2rem;
+  color: #264e70;
+}
+
+.rand-dog-list-container {
+  padding-inline: 23px
+}
+
+.rand-dog-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  gap: 34px;
+  margin-top: 57px;
+}
+
+.rand-dog-tile {
+  color: #161616;
+  text-decoration: none;   
+}
+
+img {
+  float: left;
+  width:  20rem;
+  height: 20rem;
+  object-fit: cover;
+  padding: 10px 10px 10px 10px;
+  border-style: ridge;
+  border-color: #264e70;
+  border-radius: 50%;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+img:hover  {
+  padding: 1rem;
+  background-image: linear-gradient(to bottom, rgba(240, 255, 40, 1) 0%, rgba(240, 255, 40, 1) 100%), linear-gradient(to bottom, #264e70 0%, #26706c 100%);
+  background-clip: content-box, padding-box;
+}
+

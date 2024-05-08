@@ -22,6 +22,11 @@ export default function Header() {
                     style={({isActive})=> isActive ? activeStyles : null }
                     >Dogs
                 </NavLink>
+                <NavLink
+                    to="quiz"
+                    style={({isActive})=> isActive ? activeStyles : null }
+                    >Quiz
+                </NavLink>
             </nav>
       </header>
     )

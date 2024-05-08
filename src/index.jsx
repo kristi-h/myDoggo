@@ -14,11 +14,16 @@ import './index.css'
 import Layout from "./components/Layout"
 import NotFound from "./pages/NotFound"
 import Error from "./components/Error"
+import Quiz, { loader as quizLoader } from "./pages/Quiz"
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Layout />}>
-      <Route index element={<Home />} />
-      <Route path="about" element={<About />} />
+      <Route 
+        index 
+        element={<Home />} />
+      <Route 
+        path="about" 
+        element={<About />} />
       <Route 
         path="dogs" 
         element={<Dogs />} 
@@ -29,7 +34,14 @@ const router = createBrowserRouter(createRoutesFromElements(
         element={<DogProfile />} 
         errorElement={<Error />}
         loader={dogProfileLoader} />
-      <Route path="*" element={<NotFound />} />
+      <Route 
+        path="quiz" 
+        element={<Quiz />} 
+        errorElement={<Error />}
+        loader={quizLoader} />
+      <Route 
+        path="*" 
+        element={<NotFound />} />
     </Route>
 ))
     

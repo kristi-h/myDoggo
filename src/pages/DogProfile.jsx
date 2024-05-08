@@ -1,7 +1,8 @@
 import React from "react"
 import { 
     Link, 
-    useLoaderData
+    useLoaderData,
+    useParams
 } from "react-router-dom"
 import { nanoid } from 'nanoid'
 import { getSubBreeds } from "../api"
@@ -11,12 +12,12 @@ export async function loader ({params}) {
     return await getSubBreeds(type)
 }
 export default function DogProfile() {
-
+    const { type } = useParams()
     const dog = useLoaderData()
 
     const dogPic = dog.map(url  => {
         return (
-            <div key={nanoid()} className= "dogPics">
+            <div key={nanoid()} className= "dog-pics">
                 <img id= "pic" src={url} />
             </div>
             

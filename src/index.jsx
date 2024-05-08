@@ -9,17 +9,26 @@ import ReactDOM from 'react-dom/client'
 import Home from './pages/Home'
 import About from './pages/About'  
 import Dogs, { loader as dogsLoader } from './pages/Dogs'
-import DogProfile from './pages/DogProfile'
+import DogProfile, {loader as dogProfileLoader }from './pages/DogProfile'
 import './index.css'
 import Layout from "./components/Layout"
 import NotFound from "./pages/NotFound"
+import Error from "./components/Error"
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
-      <Route path="dogs" element={<Dogs />} loader={vansLoader} />
-      <Route path="dogs/:type" element={<DogProfile />} />
+      <Route 
+        path="dogs" 
+        element={<Dogs />} 
+        errorElement={<Error />}
+        loader={dogsLoader} />
+      <Route 
+        path="dogs/:type" 
+        element={<DogProfile />} 
+        errorElement={<Error />}
+        loader={dogProfileLoader} />
       <Route path="*" element={<NotFound />} />
     </Route>
 ))

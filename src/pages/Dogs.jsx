@@ -6,14 +6,11 @@ import {
 } from "react-router-dom"
 import { getAllBreeds } from "../api"
 
-export function loader() {
+export async function loader() {
     return getAllBreeds()
 }
 export default function Dogs(){
-    const dogs {
-        breed: "";
-        subbreed: [];
-    } = useLoaderData()
+    const dogs = useLoaderData()
     
     const { type } = useParams()
     

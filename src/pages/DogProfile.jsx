@@ -1,23 +1,18 @@
 import React from "react"
-import { Link, useParams, useLocation } from "react-router-dom"
+import { 
+    Link, 
+    useLoaderData
+} from "react-router-dom"
 import { nanoid } from 'nanoid'
+import { getSubBreeds } from "../api"
 
+export async function loader ({params}) {
+    const type = params.type
+    return await getSubBreeds(type)
+}
 export default function DogProfile() {
-    
-    const [dog, setDog] = React.useState([])
-    const location = useLocation()
-    console.log(location)
-    const { type } = useParams()
-    
-    React.useEffect(() => {
-        const url = `https://dog.ceo/api/breed/${type}/images`
-        fetch(url)
-            .then(resp => resp.json())
-            .then(data => {
-                setDog(data.message)})
-            
-    }, [])
-    console.log(dog)
+
+    const dog = useLoaderData()
 
     const dogPic = dog.map(url  => {
         return (

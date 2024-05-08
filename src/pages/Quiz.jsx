@@ -1,7 +1,7 @@
 import React from "react"
 import { useLoaderData } from "react-router-dom"
 import { getRandomImgs } from "../api"
-import { nanoid } from 'nanoid'
+
 
 export async function loader () {
     return await getRandomImgs()
@@ -9,6 +9,7 @@ export async function loader () {
 
 export default function Quiz() {
     const dogImgs = useLoaderData()
+    const [selected, setSelected] = React.useState(false)
 
     function getBreedName(url) {
         const name = url.substr(30, url.indexOf("/") )
@@ -16,27 +17,33 @@ export default function Quiz() {
         return capName
     }
 
+    // function questionBreed(){
+    //     const rand = Math.floor(Math.random() * 3)
+    //     return dogImgs[rand]
+    // }
+
+    function handleClick(e) {
+       setSelected(prevState => !prevState)
+       return selected
+    }
+
     const randDogEl = dogImgs.map((randDog, index) => {
         return (
             <div key={index} className ="rand-dog-tile">
-                <button 
-                // onClick={handleClick}   
+                <button onClick="handleclick(e)"
                 >
                     <img src={randDog}></img>
-                    <p>{getBreedName(randDog)}</p>
+                    <h3>{selected? getBreedName(randDog): ""}</h3>
+                   
                 </button>
             </div>
         )
     })
 
-    // function handleClick() {
-
-    // }
-
     return(
         <div>
             <h1 className="title">Quiz Time!</h1>
-            <h3>Select the breed</h3>
+            {/* <h3>Select the {getBreedName(questionBreed)}</h3> */}
             <div className="rand-dog-list">
                 {randDogEl}
             </div>

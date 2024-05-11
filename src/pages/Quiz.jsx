@@ -1,5 +1,5 @@
-import React from "react"
-import { useLoaderData, useEffect } from "react-router-dom"
+import React, {useEffect} from "react"
+import { useLoaderData } from "react-router-dom"
 import { getRandomImgs } from "../api"
 import RandDog from "../components/randDog"
 
@@ -19,8 +19,8 @@ export default function Quiz() {
 
     const [gameStat, setGameStat] = React.useState({
         tries: 0,
-        isGame: false,
         answered: 0,
+        isGame: false,
     })
 
     useEffect(()=> {
@@ -35,6 +35,7 @@ export default function Quiz() {
     function question(){
         const rand = Math.floor(Math.random() * 3)
         const chosen = dogImgs[rand]
+        console.log(chosen)
         return getBreed(chosen)
     }
 
@@ -65,14 +66,13 @@ export default function Quiz() {
         }))
     }
 
-    function handleClick() {
+    function handleClick(url) {
         setCurrentDog(prev => ({
             ...prev,
             isSelected: true,
-            name: getBreed(),
+            name: getBreed(url),
         })) 
         checkAnswer()
-        return currentDog
     }
 
     return(

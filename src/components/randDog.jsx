@@ -7,7 +7,7 @@ export default function RandDog(props) {
         props.dogImgs.map((randDog, index) => {
             return (
                 <div key={index} className ="rand-dog-tile">
-                    <button onClick={props.handleClick}
+                    <button onClick={() => props.handleClick(randDog)}
                     >
                         <img src={randDog}></img>
                         <h3>{props.currentDog.isSelected? props.currentDog: ""}</h3>

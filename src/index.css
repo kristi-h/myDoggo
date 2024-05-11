@@ -311,7 +311,7 @@ i[class*='dog-type-'] {
 
 /***  QUIZ PAGE ***/
 
-.title {
+.title-container {
   text-align: center;
   font-size: 5rem;
   color: #264e70;
@@ -362,3 +362,4 @@ img:hover  {
 button {
   border-width: 0;
 }
+

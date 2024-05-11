@@ -53,6 +53,6 @@ function App() {
 
 ReactDOM
   .createRoot(document.getElementById('root'))
-  render(
+  .render(
    <App />
 )

@@ -1,5 +1,5 @@
 import React, {useEffect} from "react"
-import { useLoaderData } from "react-router-dom"
+import { Link, useLoaderData } from "react-router-dom"
 import { getRandomImgs } from "../api"
 import RandDog from "../components/randDog"
 
@@ -20,7 +20,7 @@ export default function Quiz() {
     const [gameStat, setGameStat] = React.useState({
         tries: 0,
         answered: 0,
-        isGame: false,
+        isGame: true,
     })
 
     useEffect(()=> {
@@ -30,7 +30,7 @@ export default function Quiz() {
         if (isMaxTries || isMaxAnswered){
             endGame()
         } 
-    }, [gameStat])
+    }, [currentDog])
 
     function question(){
         const rand = Math.floor(Math.random() * 3)
@@ -39,9 +39,11 @@ export default function Quiz() {
         return getBreed(chosen)
     }
 
-    function getBreed(url) {
-        const name = url.substr(30, url.indexOf("/") )
+    function getBreed(url= "") {
+        const name = url.substring(30).split("/", 1).join()
+        console.log(name)
         const capName = name[0].toUpperCase()+name.slice(1).toLowerCase()
+        console.log(name)
         return capName
     }
  
@@ -66,6 +68,15 @@ export default function Quiz() {
         }))
     }
 
+    function newGame() {
+        setGameStat(prev => ({
+            ...prev,
+            isGame: true,
+            answered: 0,
+            tries: 0
+        }))
+    }
+
     function handleClick(url) {
         setCurrentDog(prev => ({
             ...prev,
@@ -77,7 +88,9 @@ export default function Quiz() {
 
     return(
         <div>
-            <h1 className="title">Quiz Time!</h1>
+            <div className="title-container">
+                {gameStat.isGame? <h1 className="title"> Quiz Time!</h1>: <button onClick={newGame}>Start Over?</button>}
+            </div>
             <h3>Select the {question()}</h3>
             <div className="rand-dog-list">
                 { <RandDog

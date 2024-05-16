@@ -363,3 +363,10 @@ button {
   border-width: 0;
 }
 
+.correct-answer {
+  color: blue;
+}
+
+.wrong-answer {
+  color: red;
+}

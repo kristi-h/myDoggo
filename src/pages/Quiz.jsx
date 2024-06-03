@@ -6,12 +6,13 @@ import RandDog from "../components/randDog"
 export async function loader () {
     return await getRandomImgs()
 }
-
+let count = 0
+console.log('count',count)
 export default function Quiz() {
     const dogImgs = useLoaderData()
     const [round, setRound] = React.useState(dogImgs)
     console.log('round before question',round)
-    const [dogToMatch, setDogToMatch] = React.useState(question())
+    const [dogToMatch, setDogToMatch] = React.useState(question)
 
     const [currentDog, setCurrentDog] = React.useState({
         key: "",
@@ -37,6 +38,8 @@ export default function Quiz() {
     }, [currentDog])
 
     function question(){
+        count++
+        console.log('count2',count)
         const rand = Math.floor(Math.random() * round.length)
         const chosen = round[rand]
         console.log(chosen, "chosen")
@@ -69,7 +72,7 @@ export default function Quiz() {
         console.log('current', currentDog.name)
         console.log('url', getBreed(url))
         console.log('question', dogToMatch)
-        setDogToMatch(question())
+        
         if (correctAnswer) {    
             setGameStat(prev => ({
                 ...prev,

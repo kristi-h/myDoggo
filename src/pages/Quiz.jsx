@@ -9,8 +9,10 @@ export async function loader () {
 
 export default function Quiz() {
     const dogImgs = useLoaderData()
+    const [round, setRound] = React.useState(dogImgs)
+    console.log('round before question',round)
     const [dogToMatch, setDogToMatch] = React.useState(question())
-    // const [dogOptions, setDogOptions] = React.useState([])
+
     const [currentDog, setCurrentDog] = React.useState({
         key: "",
         isSelected: false,
@@ -34,23 +36,31 @@ export default function Quiz() {
         } 
     }, [currentDog])
 
-    // useEffect(()=> {
-    //     setDogToMatch()
-    //     setCurrentDog()
-    //     setDogOptions()
-    // }, [question])
-
     function question(){
-        const rand = Math.floor(Math.random() * 3)
-        const chosen = dogImgs[rand]
+        const rand = Math.floor(Math.random() * round.length)
+        const chosen = round[rand]
+        console.log(chosen, "chosen")
+        console.log(round, "round")
+        setRound(prev=> prev.filter((_, index) => rand !== index))
         return getBreed(chosen)
         }
+    console.log('round after question',round)
     
     function getBreed(url= "") {
         const name = url.substring(30).split("/", 1).join()
         const capName = name[0].toUpperCase()+name.slice(1).toLowerCase()
         return capName
     }
+
+    // React.useEffect(()=> {
+    //     //get new set of images
+    //     setRound(getRandomImgs())
+    // }, [round.length === 0])
+
+    // React.useEffect(()=> {
+    //     //set new question after previous question is omitted from current round array
+    //     setDogToMatch(question())
+    // }, [round.length])
  
     function checkAnswer(url) {
         const correctAnswer = getBreed(url) === dogToMatch
@@ -59,7 +69,7 @@ export default function Quiz() {
         console.log('current', currentDog.name)
         console.log('url', getBreed(url))
         console.log('question', dogToMatch)
-        
+        setDogToMatch(question())
         if (correctAnswer) {    
             setGameStat(prev => ({
                 ...prev,
@@ -104,7 +114,7 @@ export default function Quiz() {
             <div className="title-container">
                 {gameStat.isGame? <h1 className="title"> Quiz Time!</h1>: <button onClick={newGame}>Start Over?</button>}
             </div>
-            <h3>Select the {question(dogToMatch)}</h3>
+            <h3>Select the {dogToMatch}</h3>
             <div className="rand-dog-list">
                 { <RandDog
                     dogImgs={dogImgs}
@@ -112,7 +122,10 @@ export default function Quiz() {
                     gameStat={gameStat}
                     handleClick = {handleClick}
                 /> }
+                <h2>{currentDog.isSelected && currentDog.name}</h2>
             </div>
+           
+            <br></br>
             <h3>Til completion: {gameStat.answered}/10</h3>
             <h3>Chances left: {gameStat.tries}/3</h3>
         </div>

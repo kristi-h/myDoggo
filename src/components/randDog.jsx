@@ -11,12 +11,6 @@ export default function RandDog(props) {
                     >
                     <img src={randDog}></img>
                     </button>
-                    
-                    <h3 
-                    // className={props.currentDog.isCorrect? "correct-answer": "wrong-answer"} 
-                    >
-                        {props.currentDog.isSelected? props.currentDog.name: ""}</h3>
-                
                 </div>
             )
         })

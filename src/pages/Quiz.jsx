@@ -8,6 +8,13 @@ export async function loader () {
 }
 let count = 0
 console.log('count',count)
+
+export function getBreed(url= "") {
+    const name = url.substring(30).split("/", 1).join()
+    const capName = name[0].toUpperCase()+name.slice(1).toLowerCase()
+    return capName
+}
+
 export default function Quiz() {
     const dogImgs = useLoaderData()
     const [round, setRound] = React.useState(dogImgs)
@@ -48,12 +55,6 @@ export default function Quiz() {
         return getBreed(chosen)
         }
     console.log('round after question',round)
-    
-    function getBreed(url= "") {
-        const name = url.substring(30).split("/", 1).join()
-        const capName = name[0].toUpperCase()+name.slice(1).toLowerCase()
-        return capName
-    }
 
     // React.useEffect(()=> {
     //     //get new set of images
@@ -125,7 +126,6 @@ export default function Quiz() {
                     gameStat={gameStat}
                     handleClick = {handleClick}
                 /> }
-                <h2>{currentDog.isSelected && currentDog.name}</h2>
             </div>
            
             <br></br>

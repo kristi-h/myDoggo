@@ -324,7 +324,7 @@ h3 {
 }
 
 .rand-dog-list-container {
-  padding-inline: 23px
+  padding-inline: 23px;
 }
 
 .rand-dog-list {
@@ -338,6 +338,7 @@ h3 {
 .rand-dog-tile {
   color: #161616;
   text-decoration: none;   
+  margin-top: 5em;
 }
 
 img {
@@ -369,4 +370,8 @@ button {
 
 .wrong-answer {
   color: red;
+}
+
+#breed-text {
+  margin-left: 2.5em;
 }
